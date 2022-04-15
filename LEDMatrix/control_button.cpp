@@ -1,4 +1,5 @@
 #include "control_button.h"
+#include <Arduino.h>
 
 int BUTTONS[] = {7, 8, 9, 10, 11, 12};
 
