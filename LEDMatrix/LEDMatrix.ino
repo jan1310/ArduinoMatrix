@@ -1,10 +1,9 @@
-#include "control_LED.h"
-#include "control_button.h"
+#include "apollo_eifel.h"
 
 void setup() {
-  initializeStrip();
 }
 
 void loop() {
-  character('a', 1, 1);
+  mars();
+  eifel();
 }
