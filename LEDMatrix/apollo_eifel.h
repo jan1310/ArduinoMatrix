@@ -5,6 +5,7 @@ void initializeApollo();
 void mars();
 void eifel();
 void rocket();
+void earth();
 void countdown();
 
 #endif

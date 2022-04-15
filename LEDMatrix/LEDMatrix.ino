@@ -5,5 +5,8 @@ void setup() {
 }
 
 void loop() {
-  countdown();
+  rocket();
+  delay(2000);
+  earth();
+  delay(2000);
 }
