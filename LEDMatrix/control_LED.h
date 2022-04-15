@@ -7,6 +7,7 @@ void eraseAll();
 void allRandomColor();
 void allColorTransition();
 void character(char a, int x, int y);
+void number(int a, int x, int y);
 void showChar(bool charView[8][6], int x, int y);
 void showStrip();
 void laufschrift(char* text, int textLength);
