@@ -169,6 +169,44 @@ void number(int a, int x, int y) {
   }
 }
 
+void number(int a, int x, int y, int r, int g, int b) {
+  switch(a) {
+    case 1:
+      showChar(one, x, y, r, g, b);
+      break;
+    case 2:
+      showChar(two, x, y, r, g, b);
+      break;
+    case 3:
+      showChar(three, x, y, r, g, b);
+      break;
+    case 4:
+      showChar(four, x, y, r, g, b);
+      break;
+    case 5:
+      showChar(five, x, y, r, g, b);
+      break;
+    case 6:
+      showChar(six, x, y, r, g, b);
+      break;
+    case 7:
+      showChar(seven, x, y, r, g, b);
+      break;
+    case 8:
+      showChar(eigth, x, y, r, g, b);
+      break;
+    case 9:
+      showChar(nine, x, y, r, g, b);
+      break;
+    case 0:
+      showChar(zero, x, y, r, g, b);
+      break;
+    default:
+      showChar(charView, x, y, r, g, b);
+      break;
+  }
+}
+
 void character(char a, int x, int y) {
                                                                                                                                          
   switch(a) {
@@ -282,11 +320,134 @@ void character(char a, int x, int y) {
   }
 }
 
+void character(char a, int x, int y, int r, int g, int b) {
+                                                                                                                                         
+  switch(a) {
+    case 'A':
+    case 'a':
+       showChar(charViewa, x, y, r, g, b);
+      break;
+    case 'B':
+    case 'b':
+       showChar(charViewb, x, y, r, g, b);
+      break;
+    case 'C':
+    case 'c':
+       showChar(charViewc, x, y, r, g, b);
+      break;
+    case 'D':
+    case 'd':
+       showChar(charViewd, x, y, r, g, b);
+      break;
+    case 'E':
+    case 'e':
+       showChar(charViewe, x, y, r, g, b);
+      break;
+    case 'F':
+    case 'f':
+       showChar(charViewf, x, y, r, g, b);
+      break;
+    case 'G':
+    case 'g':
+       showChar(charViewg, x, y, r, g, b);
+      break;
+    case 'H':
+    case 'h':
+       showChar(charViewh, x, y, r, g, b);
+      break;
+    case 'I':
+    case 'i':
+       showChar(charViewi, x, y, r, g, b);
+      break;
+    case 'J':
+    case 'j':
+       showChar(charViewj, x, y, r, g, b);
+      break;
+    case 'K':
+    case 'k':
+       showChar(charViewk, x, y, r, g, b);
+      break;
+    case 'L':
+    case 'l':
+       showChar(charViewl, x, y, r, g, b);
+      break;
+    case 'M':
+    case 'm':
+       showChar(charViewm, x, y, r, g, b);
+      break;
+    case 'N':
+    case 'n':
+       showChar(charViewn, x, y, r, g, b);
+      break;
+    case 'O':
+    case 'o':
+       showChar(charViewo, x, y, r, g, b);
+      break;
+    case 'P':
+    case 'p':
+       showChar(charViewp, x, y, r, g, b);
+      break;
+    case 'Q':
+    case 'q':
+       showChar(charViewq, x, y, r, g, b);
+      break;
+    case 'R':
+    case 'r':
+       showChar(charViewr, x, y, r, g, b);
+      break;
+    case 'S':
+    case 's':
+       showChar(charViews, x, y, r, g, b);
+      break;
+    case 'T':
+    case 't':
+       showChar(charViewt, x, y, r, g, b);
+      break;
+    case 'U':
+    case 'u':
+       showChar(charViewu, x, y, r, g, b);
+      break;
+    case 'V':
+    case 'v':
+       showChar(charViewv, x, y, r, g, b);
+      break;
+    case 'W':
+    case 'w':
+       showChar(charVieww, x, y, r, g, b);
+      break;
+    case 'X':
+    case 'x':
+       showChar(charViewx, x, y, r, g, b);
+      break;
+    case 'Y':
+    case 'y':
+       showChar(charViewy, x, y, r, g, b);
+      break;
+    case 'Z':
+    case 'z':
+       showChar(charViewz, x, y, r, g, b);
+      break;
+    default: 
+       showChar(charView, x, y, r, g, b);
+      break;
+  }
+}
+
 void showChar(bool charView[8][6], int x, int y){
   for (int row = 0; row < 8; row++) {
     for (int column = 0; column < 6; column++) {
       if (charView[row][column] == true){ 
         oneLED(x + (7-row), y + column, 255, 255, 255);
+      }
+    }
+  }
+}
+
+void showChar(bool charView[8][6], int x, int y, int r, int g, int b){
+  for (int row = 0; row < 8; row++) {
+    for (int column = 0; column < 6; column++) {
+      if (charView[row][column] == true){ 
+        oneLED(x + (7-row), y + column, r, g, b);
       }
     }
   }
