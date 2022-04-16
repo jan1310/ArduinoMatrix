@@ -8,5 +8,6 @@ void rocket();
 void earth();
 void mars();
 void countdown();
+void beer();
 
 #endif
