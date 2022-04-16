@@ -1,49 +1,45 @@
 #include "control_LED.h"
-#include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 
-#define PIN      6
-#define N_LEDS 144
+byte charViewAByte[6] = { 49 , 36 , 146 , 121 , 36 , 128 };
+byte charViewBByte[6] = { 113 , 36 , 148 , 73 , 39 , 0 };
+byte charViewCByte[6] = { 57 , 4 , 16 , 65 , 3 , 128 };
+byte charViewDByte[6] = { 113 , 36 , 146 , 73 , 39 , 0 };
+byte charViewEByte[6] = { 121 , 4 , 28 , 65 , 7 , 128 };
+byte charViewFByte[6] = { 121 , 4 , 28 , 65 , 4 , 0 };
+byte charViewGByte[6] = { 49 , 36 , 22 , 73 , 35 , 128 };
+byte charViewHByte[6] = { 73 , 36 , 158 , 73 , 36 , 128 };
+byte charViewIByte[6] = { 56 , 65 , 4 , 16 , 67 , 128 };
+byte charViewJByte[6] = { 112 , 65 , 4 , 16 , 70 , 0 };
+byte charViewKByte[6] = { 73 , 70 , 16 , 97 , 68 , 128 };
+byte charViewLByte[6] = { 65 , 4 , 16 , 65 , 7 , 128 };
+byte charViewMByte[6] = { 69 , 181 , 85 , 85 , 20 , 64 };
+byte charViewNByte[6] = { 69 , 22 , 85 , 77 , 20 , 64 };
+byte charViewOByte[6] = { 49 , 36 , 146 , 73 , 35 , 0 };
+byte charViewPByte[6] = { 113 , 36 , 156 , 65 , 4 , 0 };
+byte charViewQByte[6] = { 49 , 36 , 146 , 73 , 99 , 192 };
+byte charViewRByte[6] = { 113 , 36 , 156 , 97 , 68 , 128 };
+byte charViewSByte[6] = { 49 , 36 , 12 , 9 , 35 , 0 };
+byte charViewTByte[6] = { 124 , 65 , 4 , 16 , 65 , 0 };
+byte charViewUByte[6] = { 73 , 36 , 146 , 73 , 35 , 0 };
+byte charViewVByte[6] = { 69 , 20 , 81 , 68 , 161 , 0 };
+byte charViewWByte[6] = { 69 , 21 , 85 , 85 , 180 , 64 };
+byte charViewXByte[6] = { 69 , 18 , 132 , 41 , 20 , 64 };
+byte charViewYByte[6] = { 69 , 18 , 132 , 16 , 65 , 0 };
+byte charViewZByte[6] = { 124 , 16 , 132 , 33 , 7 , 192 };
+byte charViewByte[6] = { 0 , 0 , 0 , 0 , 0 , 0 };
+byte zero[6] = { 49 , 36 , 154 , 89 , 35 , 0 };
+byte one[6] = { 16 , 197 , 4 , 16 , 65 , 0 };
+byte two[6] = { 49 , 32 , 140 , 65 , 7 , 128 };
+byte three[6] = { 49 , 32 , 132 , 9 , 35 , 0 };
+byte four[6] = { 16 , 133 , 30 , 16 , 65 , 0 };
+byte five[6] = { 121 , 4 , 28 , 9 , 35 , 0 };
+byte six[6] = { 49 , 36 , 28 , 73 , 35 , 0 };
+byte seven[6] = { 120 , 33 , 8 , 65 , 4 , 0 };
+byte eigth[6] = { 49 , 36 , 140 , 73 , 35 , 0 };
+byte nine[6] = { 49 , 36 , 142 , 9 , 35 , 0 };
 
-bool charViewa[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewb[8][6] = { {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewc[8][6] = { {0, 0, 1, 1, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 0, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewd[8][6] = { {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewe[8][6] = { {0, 1, 1, 1, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewf[8][6] = { {0, 1, 1, 1, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewg[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 1, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewh[8][6] = { {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewi[8][6] = { {0, 0, 1, 1, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewj[8][6] = { {0, 1, 1, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 1, 1, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewk[8][6] = { {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 1, 1, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 0, 0, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewl[8][6] = { {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewm[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 1, 0, 1, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewn[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 1, 0, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 0, 1, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewo[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewp[8][6] = { {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewq[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 1, 1, 0} ,  {0, 0, 1, 1, 1, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewr[8][6] = { {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 1, 1, 0, 0, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViews[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewt[8][6] = { {0, 1, 1, 1, 1, 1} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewu[8][6] = { {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewv[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 1, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charVieww[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 0, 1, 0, 1} ,  {0, 1, 1, 0, 1, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewx[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 1, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 0, 1, 0} ,  {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewy[8][6] = { {0, 1, 0, 0, 0, 1} ,  {0, 1, 0, 0, 0, 1} ,  {0, 0, 1, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool charViewz[8][6] = { {0, 1, 1, 1, 1, 1} ,  {0, 0, 0, 0, 0, 1} ,  {0, 0, 0, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 1, 1} ,  {0, 0, 0, 0, 0, 0} };
-bool charView[8][6] = { {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool zero[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 1, 0, 1, 0} ,  {0, 1, 0, 1, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool one[8][6] = { {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool two[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool three[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool four[8][6] = { {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 0, 0, 0} ,  {0, 1, 0, 1, 0, 0} ,  {0, 1, 1, 1, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool five[8][6] = { {0, 1, 1, 1, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool six[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool seven[8][6] = { {0, 1, 1, 1, 1, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 0, 0, 1, 0, 0} ,  {0, 0, 1, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 1, 0, 0, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool eigth[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-bool nine[8][6] = { {0, 0, 1, 1, 0, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 1, 0} ,  {0, 0, 0, 0, 1, 0} ,  {0, 1, 0, 0, 1, 0} ,  {0, 0, 1, 1, 0, 0} ,  {0, 0, 0, 0, 0, 0} };
-
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(144, 6, NEO_GRB + NEO_KHZ800);
 
 void initializeStrip() {
   strip.begin();
@@ -78,7 +74,6 @@ void allRandomColor() {
 void showStrip() {
   strip.show();
 }
-
 
 void allColorTransition() {
 for (float i=0; i<strip.numPixels(); i++) {
@@ -164,7 +159,7 @@ void number(int a, int x, int y) {
       showChar(zero, x, y);
       break;
     default:
-      showChar(charView, x, y);
+      showChar(charViewByte, x, y);
       break;
   }
 }
@@ -202,7 +197,7 @@ void number(int a, int x, int y, int r, int g, int b) {
       showChar(zero, x, y, r, g, b);
       break;
     default:
-      showChar(charView, x, y, r, g, b);
+      showChar(charViewByte, x, y, r, g, b);
       break;
   }
 }
@@ -212,110 +207,110 @@ void character(char a, int x, int y) {
   switch(a) {
     case 'A':
     case 'a':
-       showChar(charViewa, x, y);
+       showChar(charViewAByte, x, y);
       break;
     case 'B':
     case 'b':
-       showChar(charViewb, x, y);
+       showChar(charViewBByte, x, y);
       break;
     case 'C':
     case 'c':
-       showChar(charViewc, x, y);
+       showChar(charViewCByte, x, y);
       break;
     case 'D':
     case 'd':
-       showChar(charViewd, x, y);
+       showChar(charViewDByte, x, y);
       break;
     case 'E':
     case 'e':
-       showChar(charViewe, x, y);
+       showChar(charViewEByte, x, y);
       break;
     case 'F':
     case 'f':
-       showChar(charViewf, x, y);
+       showChar(charViewFByte, x, y);
       break;
     case 'G':
     case 'g':
-       showChar(charViewg, x, y);
+       showChar(charViewGByte, x, y);
       break;
     case 'H':
     case 'h':
-       showChar(charViewh, x, y);
+       showChar(charViewHByte, x, y);
       break;
     case 'I':
     case 'i':
-       showChar(charViewi, x, y);
+       showChar(charViewIByte, x, y);
       break;
     case 'J':
     case 'j':
-       showChar(charViewj, x, y);
+       showChar(charViewJByte, x, y);
       break;
     case 'K':
     case 'k':
-       showChar(charViewk, x, y);
+       showChar(charViewKByte, x, y);
       break;
     case 'L':
     case 'l':
-       showChar(charViewl, x, y);
+       showChar(charViewLByte, x, y);
       break;
     case 'M':
     case 'm':
-       showChar(charViewm, x, y);
+       showChar(charViewMByte, x, y);
       break;
     case 'N':
     case 'n':
-       showChar(charViewn, x, y);
+       showChar(charViewNByte, x, y);
       break;
     case 'O':
     case 'o':
-       showChar(charViewo, x, y);
+       showChar(charViewOByte, x, y);
       break;
     case 'P':
     case 'p':
-       showChar(charViewp, x, y);
+       showChar(charViewPByte, x, y);
       break;
     case 'Q':
     case 'q':
-       showChar(charViewq, x, y);
+       showChar(charViewQByte, x, y);
       break;
     case 'R':
     case 'r':
-       showChar(charViewr, x, y);
+       showChar(charViewRByte, x, y);
       break;
     case 'S':
     case 's':
-       showChar(charViews, x, y);
+       showChar(charViewSByte, x, y);
       break;
     case 'T':
     case 't':
-       showChar(charViewt, x, y);
+       showChar(charViewTByte, x, y);
       break;
     case 'U':
     case 'u':
-       showChar(charViewu, x, y);
+       showChar(charViewUByte, x, y);
       break;
     case 'V':
     case 'v':
-       showChar(charViewv, x, y);
+       showChar(charViewVByte, x, y);
       break;
     case 'W':
     case 'w':
-       showChar(charVieww, x, y);
+       showChar(charViewWByte, x, y);
       break;
     case 'X':
     case 'x':
-       showChar(charViewx, x, y);
+       showChar(charViewXByte, x, y);
       break;
     case 'Y':
     case 'y':
-       showChar(charViewy, x, y);
+       showChar(charViewYByte, x, y);
       break;
     case 'Z':
     case 'z':
-       showChar(charViewz, x, y);
+       showChar(charViewZByte, x, y);
       break;
     default: 
-       showChar(charView, x, y);
+       showChar(charViewByte, x, y);
       break;
   }
 }
@@ -325,128 +320,128 @@ void character(char a, int x, int y, int r, int g, int b) {
   switch(a) {
     case 'A':
     case 'a':
-       showChar(charViewa, x, y, r, g, b);
+       showChar(charViewAByte, x, y, r, g, b);
       break;
     case 'B':
     case 'b':
-       showChar(charViewb, x, y, r, g, b);
+       showChar(charViewBByte, x, y, r, g, b);
       break;
     case 'C':
     case 'c':
-       showChar(charViewc, x, y, r, g, b);
+       showChar(charViewCByte, x, y, r, g, b);
       break;
     case 'D':
     case 'd':
-       showChar(charViewd, x, y, r, g, b);
+       showChar(charViewDByte, x, y, r, g, b);
       break;
     case 'E':
     case 'e':
-       showChar(charViewe, x, y, r, g, b);
+       showChar(charViewEByte, x, y, r, g, b);
       break;
     case 'F':
     case 'f':
-       showChar(charViewf, x, y, r, g, b);
+       showChar(charViewFByte, x, y, r, g, b);
       break;
     case 'G':
     case 'g':
-       showChar(charViewg, x, y, r, g, b);
+       showChar(charViewGByte, x, y, r, g, b);
       break;
     case 'H':
     case 'h':
-       showChar(charViewh, x, y, r, g, b);
+       showChar(charViewHByte, x, y, r, g, b);
       break;
     case 'I':
     case 'i':
-       showChar(charViewi, x, y, r, g, b);
+       showChar(charViewIByte, x, y, r, g, b);
       break;
     case 'J':
     case 'j':
-       showChar(charViewj, x, y, r, g, b);
+       showChar(charViewJByte, x, y, r, g, b);
       break;
     case 'K':
     case 'k':
-       showChar(charViewk, x, y, r, g, b);
+       showChar(charViewKByte, x, y, r, g, b);
       break;
     case 'L':
     case 'l':
-       showChar(charViewl, x, y, r, g, b);
+       showChar(charViewLByte, x, y, r, g, b);
       break;
     case 'M':
     case 'm':
-       showChar(charViewm, x, y, r, g, b);
+       showChar(charViewMByte, x, y, r, g, b);
       break;
     case 'N':
     case 'n':
-       showChar(charViewn, x, y, r, g, b);
+       showChar(charViewNByte, x, y, r, g, b);
       break;
     case 'O':
     case 'o':
-       showChar(charViewo, x, y, r, g, b);
+       showChar(charViewOByte, x, y, r, g, b);
       break;
     case 'P':
     case 'p':
-       showChar(charViewp, x, y, r, g, b);
+       showChar(charViewPByte, x, y, r, g, b);
       break;
     case 'Q':
     case 'q':
-       showChar(charViewq, x, y, r, g, b);
+       showChar(charViewQByte, x, y, r, g, b);
       break;
     case 'R':
     case 'r':
-       showChar(charViewr, x, y, r, g, b);
+       showChar(charViewRByte, x, y, r, g, b);
       break;
     case 'S':
     case 's':
-       showChar(charViews, x, y, r, g, b);
+       showChar(charViewSByte, x, y, r, g, b);
       break;
     case 'T':
     case 't':
-       showChar(charViewt, x, y, r, g, b);
+       showChar(charViewTByte, x, y, r, g, b);
       break;
     case 'U':
     case 'u':
-       showChar(charViewu, x, y, r, g, b);
+       showChar(charViewUByte, x, y, r, g, b);
       break;
     case 'V':
     case 'v':
-       showChar(charViewv, x, y, r, g, b);
+       showChar(charViewVByte, x, y, r, g, b);
       break;
     case 'W':
     case 'w':
-       showChar(charVieww, x, y, r, g, b);
+       showChar(charViewWByte, x, y, r, g, b);
       break;
     case 'X':
     case 'x':
-       showChar(charViewx, x, y, r, g, b);
+       showChar(charViewXByte, x, y, r, g, b);
       break;
     case 'Y':
     case 'y':
-       showChar(charViewy, x, y, r, g, b);
+       showChar(charViewYByte, x, y, r, g, b);
       break;
     case 'Z':
     case 'z':
-       showChar(charViewz, x, y, r, g, b);
+       showChar(charViewZByte, x, y, r, g, b);
       break;
     default: 
-       showChar(charView, x, y, r, g, b);
+       showChar(charViewByte, x, y, r, g, b);
       break;
   }
 }
 
-void showChar(bool charView[8][6], int x, int y){
+void showChar(byte charView[6], int x, int y){
   for (int row = 0; row < 8; row++) {
     for (int column = 0; column < 6; column++) {
-      if (charView[row][column] == true){ 
+      if (getBit(charView, row*6 + column)){ 
         oneLED(x + (7-row), y + column, 255, 255, 255);
       }
     }
   }
 }
 
-void showChar(bool charView[8][6], int x, int y, int r, int g, int b){
+void showChar(byte charView[6], int x, int y, int r, int g, int b){
   for (int row = 0; row < 8; row++) {
     for (int column = 0; column < 6; column++) {
-      if (charView[row][column] == true){ 
+      if (getBit(charView, row*6 + column)){ 
         oneLED(x + (7-row), y + column, r, g, b);
       }
     }
@@ -463,3 +458,8 @@ void laufschrift(char* text, int textLength) {
       delay(100);
     }
   }
+bool getBit (byte byteArray[6], unsigned int absBitPos) {
+  unsigned int bytePos = absBitPos / 8;
+  unsigned int bitPos = 7 - (absBitPos % 8);                         
+  return (bool) ( byteArray[bytePos] & (1 << bitPos) ); 
+}

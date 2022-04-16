@@ -61,7 +61,7 @@ void marsLaufschrift(){
 
 void eifelLaufschrift(){
   char* textEifel = "Zielort Eifel";
-  laufschrift(textEifel, 13);
+  laufschrift(textEifel, 14);
 }
 
 void rocket(){
