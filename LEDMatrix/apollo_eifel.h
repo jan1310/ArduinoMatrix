@@ -2,10 +2,11 @@
 #define APOLLO_EIFEL_H
 
 void initializeApollo();
-void mars();
-void eifel();
+void marsLaufschrift();
+void eifelLaufschrift();
 void rocket();
 void earth();
+void mars();
 void countdown();
 
 #endif

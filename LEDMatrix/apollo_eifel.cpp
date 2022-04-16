@@ -54,12 +54,12 @@ void countdown(){
   delay(1000);
 }
 
-void mars(){
+void marsLaufschrift(){
   char* textMars = "Zielort Mars";
   laufschrift(textMars, 13);
 }
 
-void eifel(){
+void eifelLaufschrift(){
   char* textEifel = "Zielort Eifel";
   laufschrift(textEifel, 13);
 }
@@ -253,5 +253,122 @@ void earth() {
   oneLED(0, 5, 0, 0, 255);
   oneLED(0, 6, 100, 150, 0);
   oneLED(0, 7, 25, 225, 0);
+  showStrip();
+}
+
+void mars() {
+  eraseAll();
+  oneLED(11, 4, 200, 0, 0);
+  oneLED(11, 5, 200, 0, 0);
+  oneLED(11, 6, 200, 0, 0);
+  oneLED(11, 7, 200, 0, 0);
+  oneLED(10, 2, 72, 90, 30);
+  oneLED(10, 3, 72, 90, 30);
+  oneLED(10, 4, 70, 45, 20);
+  oneLED(10, 5, 200, 0, 0);
+  oneLED(10, 6, 200, 0, 0);
+  oneLED(10, 7, 200, 0, 0);
+  oneLED(10, 8, 72, 90, 30);
+  oneLED(10, 9, 72, 90, 30);
+  oneLED(9, 1, 200, 0, 0);
+  oneLED(9, 2, 200, 0, 0);
+  oneLED(9, 3, 200, 0, 0);
+  oneLED(9, 4, 70, 45, 20);
+  oneLED(9, 5, 70, 45, 20);
+  oneLED(9, 6, 70, 45, 20);
+  oneLED(9, 7, 70, 45, 20);
+  oneLED(9, 8, 70, 45, 20);
+  oneLED(9, 9, 70, 45, 20);
+  oneLED(9, 10, 200, 0, 0);
+  oneLED(8, 1, 200, 0, 0);
+  oneLED(8, 2, 200, 0, 0);
+  oneLED(8, 3, 72, 90, 30);
+  oneLED(8, 4, 72, 90, 30);
+  oneLED(8, 5, 200, 0, 0);
+  oneLED(8, 6, 200, 0, 0);
+  oneLED(8, 7, 200, 0, 0);
+  oneLED(8, 8, 200, 0, 0);
+  oneLED(8, 9, 72, 90, 30);
+  oneLED(8, 10, 200, 0, 0);
+  oneLED(7, 0, 200, 0, 0);
+  oneLED(7, 1, 70, 45, 20);
+  oneLED(7, 2, 70, 45, 20);
+  oneLED(7, 3, 200, 0, 0);
+  oneLED(7, 4, 200, 0, 0);
+  oneLED(7, 5, 200, 0, 0);
+  oneLED(7, 6, 200, 0, 0);
+  oneLED(7, 7, 200, 0, 0);
+  oneLED(7, 8, 70, 45, 20);
+  oneLED(7, 9, 70, 45, 20);
+  oneLED(7, 10, 70, 45, 20);
+  oneLED(7, 11, 200, 0, 0);
+  oneLED(6, 0, 200, 0, 0);
+  oneLED(6, 1, 200, 0, 0);
+  oneLED(6, 2, 200, 0, 0);
+  oneLED(6, 3, 70, 45, 20);
+  oneLED(6, 4, 70, 45, 20);
+  oneLED(6, 5, 70, 45, 20);
+  oneLED(6, 6, 70, 45, 20);
+  oneLED(6, 7, 72, 90, 30);
+  oneLED(6, 8, 72, 90, 30);
+  oneLED(6, 9, 200, 0, 0);
+  oneLED(6, 10, 200, 0, 0);
+  oneLED(6, 11, 72, 90, 30);
+  oneLED(5, 0, 200, 0, 0);
+  oneLED(5, 1, 200, 0, 0);
+  oneLED(5, 2, 200, 0, 0);
+  oneLED(5, 3, 200, 0, 0);
+  oneLED(5, 4, 200, 0, 0);
+  oneLED(5, 5, 200, 0, 0);
+  oneLED(5, 6, 200, 0, 0);
+  oneLED(5, 7, 200, 0, 0);
+  oneLED(5, 8, 200, 0, 0);
+  oneLED(5, 9, 200, 0, 0);
+  oneLED(5, 10, 200, 0, 0);
+  oneLED(5, 11, 200, 0, 0);
+  oneLED(4, 0, 200, 0, 0);
+  oneLED(4, 1, 70, 45, 20);
+  oneLED(4, 2, 70, 45, 20);
+  oneLED(4, 3, 200, 0, 0);
+  oneLED(4, 4, 200, 0, 0);
+  oneLED(4, 5, 200, 0, 0);
+  oneLED(4, 6, 200, 0, 0);
+  oneLED(4, 7, 200, 0, 0);
+  oneLED(4, 8, 200, 0, 0);
+  oneLED(4, 9, 200, 0, 0);
+  oneLED(4, 10, 200, 0, 0);
+  oneLED(4, 11, 200, 0, 0);
+  oneLED(3, 1, 200, 0, 0);
+  oneLED(3, 2, 72, 90, 30);
+  oneLED(3, 3, 72, 90, 30);
+  oneLED(3, 4, 70, 45, 20);
+  oneLED(3, 5, 200, 0, 0);
+  oneLED(3, 6, 200, 0, 0);
+  oneLED(3, 7, 72, 90, 30);
+  oneLED(3, 8, 72, 90, 30);
+  oneLED(3, 9, 72, 90, 30);
+  oneLED(3, 10, 70, 45, 20);
+  oneLED(2, 1, 200, 0, 0);
+  oneLED(2, 2, 200, 0, 0);
+  oneLED(2, 3, 200, 0, 0);
+  oneLED(2, 4, 200, 0, 0);
+  oneLED(2, 5, 70, 45, 20);
+  oneLED(2, 6, 70, 45, 20);
+  oneLED(2, 7, 70, 45, 20);
+  oneLED(2, 8, 70, 45, 20);
+  oneLED(2, 9, 200, 0, 0);
+  oneLED(2, 10, 200, 0, 0);
+  oneLED(1, 2, 70, 45, 20);
+  oneLED(1, 3, 200, 0, 0);
+  oneLED(1, 4, 200, 0, 0);
+  oneLED(1, 5, 200, 0, 0);
+  oneLED(1, 6, 200, 0, 0);
+  oneLED(1, 7, 200, 0, 0);
+  oneLED(1, 8, 72, 90, 30);
+  oneLED(1, 9, 72, 90, 30);
+  oneLED(0, 4, 70, 45, 20);
+  oneLED(0, 5, 70, 45, 20);
+  oneLED(0, 6, 70, 45, 20);
+  oneLED(0, 7, 200, 0, 0);
   showStrip();
 }
