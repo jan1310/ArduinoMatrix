@@ -1,9 +1,21 @@
 #include "apollo_eifel.h"
 #include "control_LED.h"
+#include "rfid.h"
 #include <Arduino.h>
 
 void initializeApollo() {
   initializeStrip();
+  initializeRFID();
+}
+
+void win() {
+  while (true) {
+      eifelLaufschrift();
+      rocket();
+      delay(2000);
+      earth();
+      delay(2000);
+  }
 }
 
 void countdown(){
@@ -11,47 +23,47 @@ void countdown(){
   number(1,2,0,0,255,0);
   number(0,2,6,0,255,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(9,2,3, 25, 225, 0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(8,2,3,50,200,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(7,2,3,75,175,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(6,2,3,100,150,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(5,2,3,125,125,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(4,2,3,150,100,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(3,2,3,175,75,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(2,2,3,200,50,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(1,2,3,225,25,0);
   showStrip();
-  delay(1000);
+  wait(1000);
   eraseAll();
   number(0,2,3,255,0,0);
   showStrip();
-  delay(1000);
+  wait(1000);
 }
 
 void marsLaufschrift(){

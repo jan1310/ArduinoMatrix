@@ -1,3 +1,4 @@
+#include "rfid.h"
 #include "control_LED.h"
 #include <Adafruit_NeoPixel.h>
 
@@ -43,6 +44,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(144, 6, NEO_GRB + NEO_KHZ800);
 
 void initializeStrip() {
   strip.begin();
+  initializeRFID();
 }
 
 void oneLED(int x, int y, int r, int g, int b) {
@@ -82,7 +84,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float b = (255*(i/144))/3;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
   for (float i=strip.numPixels(); i>=0; i--) {
     float r = 0;
@@ -90,7 +92,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float g = (255 - (255*(i/144)))/3;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
   for (float i=0; i<strip.numPixels(); i++) {
     float r = (255*(i/144))/3;
@@ -98,7 +100,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float b = 0;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
   for (float i=strip.numPixels(); i>=0; i--) {
     float b = (255 - (255*(i/144)))/3;
@@ -106,7 +108,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float r = (255*(i/144))/3;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
   for (float i=0; i<strip.numPixels(); i++) {
     float r = 0;
@@ -114,7 +116,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float b = (255 - (255*(i/144)))/3;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
   for (float i=strip.numPixels(); i>=0; i--) {
     float g = (255*(i/144))/3;
@@ -122,7 +124,7 @@ for (float i=0; i<strip.numPixels(); i++) {
     float b = 0;
     strip.setPixelColor(i, strip.Color(r, g, b));
     strip.show();
-    delay(100);
+    wait(100);
   }
 }
 
@@ -455,7 +457,7 @@ void laufschrift(char* text, int textLength) {
         character(text[h], 2, 12 + (h*6) - i);
       }
       strip.show();
-      delay(100);
+      wait(100);
     }
   }
 bool getBit (byte byteArray[6], unsigned int absBitPos) {
